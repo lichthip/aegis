@@ -1,189 +1,81 @@
 # Aegis — Portfolio Intelligence & Risk Simulation Platform
 
-> Full-stack quantitative finance platform built with **Next.js 14**, **FastAPI**, and **Python**.  
-> Real market data via **yfinance** · CAPM · Monte Carlo (GBM) · Black-Scholes · VaR/CVaR · AI Insights
+> Full-stack quantitative finance platform built for aspiring quant, SWE, and fintech roles.
 
-**Live Demo:** [https://aegis-finance.vercel.app](https://aegis-finance.vercel.app) ← replace after deployment
+| | |
+|---|---|
+| 🌐 **Live Demo** | [aegis-finance-sg.vercel.app](https://aegis-finance-sg.vercel.app) |
+| 📡 **API Docs** | [aegis-7qsn.onrender.com/docs](https://aegis-7qsn.onrender.com/docs) |
+| 💻 **Source Code** | [github.com/YOUR_USERNAME/aegis](https://github.com/YOUR_USERNAME/aegis) |
 
 ---
 
 ## What It Does
 
-| Module | What It Shows |
+Aegis lets users build a stock portfolio and immediately understand its risk profile — powered by **real market data from Yahoo Finance**, not mock numbers.
+
+| Module | Description |
 |---|---|
-| **Portfolio Builder** | Build a portfolio of any tickers with custom weights |
-| **Metrics Dashboard** | CAPM return, Sharpe ratio, Beta, VaR, CVaR from real data |
-| **Monte Carlo Simulator** | 500+ GBM paths, probability of loss, 5th/95th percentile |
-| **Options Pricer** | Black-Scholes call/put pricing + all Greeks (Δ, Γ, ν, Θ, ρ) |
-| **Risk Analysis** | VaR/CVaR at 95%/99%, max drawdown, skewness, kurtosis, stress tests |
-| **AI Insights** | GPT-4o-mini translates quant metrics into plain-English analysis |
+| 📊 **Portfolio Builder** | Add any listed ticker (e.g. SPY, AAPL, JPM) with custom weights |
+| 📈 **Metrics Dashboard** | CAPM expected return, Sharpe ratio, Beta vs S&P 500, VaR, CVaR |
+| 🎲 **Monte Carlo Simulator** | 500+ GBM paths, probability of loss, 5th/95th percentile outcomes |
+| 📉 **Options Pricer** | Black-Scholes call/put pricing + full Greeks (Δ, Γ, ν, Θ, ρ) |
+| 🛡️ **Risk Analysis** | VaR/CVaR at 95%/99%, max drawdown, skewness, kurtosis, 2008/2020 stress tests |
+| 🤖 **AI Insights** | Translates quant metrics into plain-English risk explanations |
 
 ---
 
 ## Tech Stack
 
-- **Frontend:** Next.js 14, TypeScript, Tailwind CSS, Recharts
-- **Backend:** FastAPI (Python), yfinance, NumPy, SciPy
-- **AI:** OpenAI GPT-4o-mini (optional — has fallback)
-- **Deploy:** Vercel (frontend) + Render (backend)
+| Layer | Technology |
+|---|---|
+| Frontend | Next.js 16, TypeScript, Tailwind CSS, Recharts |
+| Backend | FastAPI (Python), yfinance, NumPy, SciPy |
+| Quant Engine | CAPM, Geometric Brownian Motion, Black-Scholes, Historical VaR |
+| AI Layer | OpenAI GPT-4o-mini (with data-driven fallback) |
+| Deployment | Vercel (frontend) + Render (backend) |
 
 ---
 
-## Local Development (Test First)
+## Quant Finance Concepts Implemented
+
+- **CAPM** — `E[R] = Rf + β(Rm - Rf)` for expected return estimation
+- **Covariance Matrix** — `σ²p = wᵀΣw` for portfolio variance
+- **Sharpe Ratio** — risk-adjusted return vs risk-free rate
+- **Geometric Brownian Motion** — `dS = μS dt + σS dW` for Monte Carlo paths
+- **Black-Scholes** — European option pricing with closed-form Greeks
+- **Historical VaR/CVaR** — tail risk quantification at 95% and 99% confidence
+- **Stress Testing** — 2008 GFC, COVID crash, +200bps rate hike scenarios
+
+---
+
+## Local Development
 
 ### Prerequisites
+- Node.js 18+ and Python 3.11+
 
-- Node.js 18+ — [nodejs.org](https://nodejs.org)
-- Python 3.11+ — [python.org](https://python.org)
-- Git — [git-scm.com](https://git-scm.com)
-
----
-
-### Step 1 — Clone / set up folders
-
+### Backend
 ```bash
-# If using git
-git init aegis && cd aegis
-
-# Or just navigate to your project root where frontend/ and backend/ folders live
-```
-
----
-
-### Step 2 — Start the Backend
-
-```bash
-# Navigate to backend
 cd backend
-
-# Create and activate a virtual environment
 python -m venv venv
-
-# Mac/Linux:
-source venv/bin/activate
-
-# Windows:
-venv\Scripts\activate
-
-# Install dependencies
+venv\Scripts\activate          # Windows
+source venv/bin/activate       # Mac/Linux
 pip install -r requirements.txt
-
-# Set up environment (copy .env is already provided)
-# No changes needed to test — OpenAI key is optional
-
-# Start the FastAPI server
 uvicorn main:app --reload --port 8000
 ```
 
-✅ Backend is live at: [http://localhost:8000](http://localhost:8000)  
-✅ API docs at: [http://localhost:8000/docs](http://localhost:8000/docs) ← Swagger UI, great for demos
+Backend live at `http://localhost:8000`  
+Swagger UI at `http://localhost:8000/docs`
 
----
-
-### Step 3 — Start the Frontend
-
+### Frontend
 ```bash
-# Open a NEW terminal tab, navigate to frontend
 cd frontend
-
-# Install dependencies
 npm install
-
-# Create your local env file
-echo "NEXT_PUBLIC_API_URL=http://localhost:8000" > .env.local
-
-# Start Next.js dev server
+echo NEXT_PUBLIC_API_URL=http://localhost:8000 > .env.local
 npm run dev
 ```
 
-✅ App is live at: [http://localhost:3000](http://localhost:3000)
-
----
-
-### Step 4 — Test Each Feature
-
-1. **Portfolio page** → add/adjust tickers (try `AAPL`, `TSLA`, `JPM`) → Save
-2. **Home dashboard** → metrics auto-load with real Yahoo Finance data
-3. **Simulate** → set 252 days, 500 sims → Run Simulation
-4. **Options** → default values work, hit Price Options
-5. **Risk** → Run Risk Analysis → see VaR, stress tests
-6. **AI Insights** → Generate Insights (works without OpenAI key using fallback)
-
----
-
-## Free Deployment Guide
-
-### Part A — Deploy Backend on Render (Free)
-
-1. Push your code to GitHub
-
-```bash
-git init
-git add .
-git commit -m "Initial commit - Aegis Finance Platform"
-git branch -M main
-git remote add origin https://github.com/YOUR_USERNAME/aegis.git
-git push -u origin main
-```
-
-2. Go to [render.com](https://render.com) → Sign up free → **New → Web Service**
-3. Connect your GitHub repo
-4. Configure:
-
-| Field | Value |
-|---|---|
-| **Name** | aegis-backend |
-| **Root Directory** | `backend` |
-| **Runtime** | Python 3 |
-| **Build Command** | `pip install -r requirements.txt` |
-| **Start Command** | `uvicorn main:app --host 0.0.0.0 --port $PORT` |
-
-5. Under **Environment Variables** add:
-
-| Key | Value |
-|---|---|
-| `OPENAI_API_KEY` | your key (or leave blank) |
-| `FRONTEND_URL` | (fill in after Vercel deploy) |
-
-6. Click **Deploy** → wait ~3 mins  
-7. Your backend URL will be: `https://aegis-backend.onrender.com`
-
-> ⚠️ Free Render instances spin down after 15 min of inactivity. First request takes ~30s to wake up. This is fine for a portfolio project.
-
----
-
-### Part B — Deploy Frontend on Vercel (Free)
-
-1. Go to [vercel.com](https://vercel.com) → Sign up with GitHub → **Add New Project**
-2. Import your `aegis` repo
-3. Configure:
-
-| Field | Value |
-|---|---|
-| **Root Directory** | `frontend` |
-| **Framework** | Next.js (auto-detected) |
-| **Build Command** | `npm run build` |
-| **Output Directory** | `.next` |
-
-4. Under **Environment Variables** add:
-
-| Key | Value |
-|---|---|
-| `NEXT_PUBLIC_API_URL` | `https://aegis-backend.onrender.com` |
-
-5. Click **Deploy** → wait ~2 mins  
-6. Your app URL will be: `https://aegis-finance.vercel.app`
-
----
-
-### Part C — Final Wiring
-
-1. Copy your Vercel URL (e.g. `https://aegis-finance.vercel.app`)
-2. Go back to Render → your backend service → **Environment**
-3. Update `FRONTEND_URL` to your Vercel URL
-4. Render will auto-redeploy
-
-✅ Your app is now live. Share this URL on your resume/LinkedIn.
+App live at `http://localhost:3000`
 
 ---
 
@@ -191,57 +83,19 @@ git push -u origin main
 
 ```
 aegis/
-├── frontend/                  # Next.js 14 + TypeScript
+├── frontend/                  # Next.js 16 + TypeScript
 │   └── src/
-│       ├── app/               # Pages (portfolio, simulate, options, risk, insights)
+│       ├── app/               # Pages: portfolio, simulate, options, risk, insights
 │       ├── components/        # Navbar, MetricCard, Charts
 │       ├── context/           # Global portfolio state
-│       └── lib/api.ts         # All API calls
+│       └── lib/api.ts         # All API calls to backend
 │
 └── backend/                   # FastAPI + Python
     ├── routers/               # metrics, simulate, options, risk, insights
     └── services/
-        ├── market_data.py     # yfinance data fetching
+        ├── market_data.py     # yfinance live data fetching
         ├── quant.py           # CAPM, GBM, Black-Scholes, VaR/CVaR
-        └── ai_insights.py     # OpenAI + fallback insights
+        └── ai_insights.py     # OpenAI + data-driven fallback
 ```
 
 ---
-
-## Resume Bullet Points (copy these)
-
-```
-Aegis — Portfolio Intelligence & Risk Simulation Platform         Apr 2026 – Present
-Solo Full-Stack Project · aegis-finance.vercel.app
-
-- Enabled data-driven investment decision-making by building a full-stack portfolio
-  analytics platform (TypeScript, Next.js, FastAPI) using real market data (yfinance),
-  implementing CAPM-based expected returns, Sharpe ratio, beta, and covariance-based
-  risk modelling.
-
-- Modelled portfolio uncertainty using a Monte Carlo simulation engine (geometric
-  Brownian motion) to model return distributions and quantify downside risk, and
-  engineered an options pricing module (Black-Scholes) to price European derivatives
-  and analyse sensitivities (Delta, Gamma, Vega).
-
-- Quantified portfolio risk exposure through implementation of Value at Risk (VaR) and
-  Conditional VaR, supporting scenario-based stress testing under 2008 GFC and COVID
-  crash conditions.
-
-- Improved interpretability of quantitative outputs by integrating an AI-driven insights
-  layer (GPT-4o-mini) that translates complex risk metrics into context-aware, actionable
-  investment explanations.
-```
-
----
-
-## Interview Talking Points
-
-- **Why GBM?** It assumes log-normal returns and constant drift/vol — a standard first-order model. Limitations: it ignores fat tails (hence why CVaR matters more than VaR alone).
-- **Why CAPM?** Simple, interpretable baseline. In practice supplemented by multi-factor models (Fama-French).
-- **What does CVaR add over VaR?** VaR tells you the threshold; CVaR tells you the expected loss *given* you've crossed it — more informative for tail risk.
-- **Black-Scholes assumptions?** Constant vol, no dividends, European exercise, log-normal prices, continuous trading. Real markets violate all of these — hence implied vol surfaces.
-
----
-
-*Built by [Your Name] · [Your LinkedIn]*
