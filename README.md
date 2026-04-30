@@ -6,7 +6,7 @@
 |---|---|
 | 🌐 **Live Demo** | [aegis-finance-sg.vercel.app](https://aegis-finance-sg.vercel.app) |
 | 📡 **API Docs** | [aegis-7qsn.onrender.com/docs](https://aegis-7qsn.onrender.com/docs) |
-| 💻 **Source Code** | [github.com/YOUR_USERNAME/aegis](https://github.com/lichthip/aegis) |
+| 💻 **Source Code** | [github.com/lichthip/aegis](https://github.com/lichthip/aegis) |
 
 ---
 
