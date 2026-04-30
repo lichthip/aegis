@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-primary: #0a0f1e;
+  --bg-card: #111827;
+  --accent: #3b82f6;
+  --accent-green: #10b981;
+  --accent-red: #ef4444;
+  --accent-yellow: #f59e0b;
+  --border: #1f2937;
+  --text-muted: #6b7280;
+}
+
+body {
+  background-color: var(--bg-primary);
+}
+
+.card {
+  @apply bg-[#111827] border border-[#1f2937] rounded-xl p-6;
+}
+
+.btn-primary {
+  @apply bg-blue-600 hover:bg-blue-700 text-white font-semibold px-5 py-2.5 rounded-lg transition-colors;
+}
+
+.btn-secondary {
+  @apply bg-[#1f2937] hover:bg-[#374151] text-white font-medium px-5 py-2.5 rounded-lg transition-colors;
+}
+
+.input-field {
+  @apply bg-[#1f2937] border border-[#374151] text-white rounded-lg px-4 py-2.5 w-full focus:outline-none focus:border-blue-500 transition-colors;
+}
+
+.label {
+  @apply text-sm text-gray-400 mb-1 block;
+}
+
+.metric-positive { @apply text-emerald-400; }
+.metric-negative { @apply text-red-400; }
+.metric-neutral  { @apply text-blue-400; }

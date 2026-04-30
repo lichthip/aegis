@@ -1,0 +1,48 @@
+# ── Python / Backend ──────────────────────────────────────────────────────────
+backend/venv/
+backend/__pycache__/
+backend/**/__pycache__/
+backend/**/*.pyc
+backend/**/*.pyo
+backend/.env
+*.egg-info/
+dist/
+build/
+.pytest_cache/
+.mypy_cache/
+
+# ── Node / Frontend ───────────────────────────────────────────────────────────
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+frontend/.env.local
+frontend/.env.development.local
+frontend/.env.test.local
+frontend/.env.production.local
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+
+# ── Environment files (NEVER commit real keys) ────────────────────────────────
+.env
+.env.local
+.env.production
+# Keep the example file so others know what vars are needed
+!backend/.env.example
+
+# ── OS files ──────────────────────────────────────────────────────────────────
+.DS_Store
+.DS_Store?
+Thumbs.db
+desktop.ini
+
+# ── IDE / Editor ──────────────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ── Misc ──────────────────────────────────────────────────────────────────────
+*.log
+*.tmp
+.cache/

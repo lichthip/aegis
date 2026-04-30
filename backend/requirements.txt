@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+yfinance
+numpy
+scipy
+pandas
+openai
+python-dotenv
+httpx
+pydantic
